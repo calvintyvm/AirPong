@@ -26,33 +26,28 @@ export default class Board {
         circle.setAttributeNS(null,'cx', this.width/2),
         circle.setAttributeNS(null,'cy',this.height/2);
         circle.setAttributeNS(null,'fill','red');
-        console.log(circle);
+      
 
-        let circle2 = document.createElementNS(SVG_NS, 'circle2');
-        circle2.setAttributeNS(null,'r',40),
-        circle2.setAttributeNS(null,'cx', '0'),
-        circle2.setAttributeNS(null,'cy',this.height/2);
-        circle2.setAttributeNS(null,'fill','skyblue');
-        circle2.setAttributeNS(null,'stroke', 'red');
+        // let circle = document.createElementNS(SVG_NS, 'circle');
+        // circle.setAttributeNS(null,'r',40),
+        // circle.setAttributeNS(null,'cx', '0'),
+        // circle.setAttributeNS(null,'cy',this.height/2);
+        // circle.setAttributeNS(null,'fill','skyblue');
+        // circle.setAttributeNS(null,'stroke', 'red');
 
-        let circle3 = document.createElementNS(SVG_NS, 'circle3');
-        circle3.setAttributeNS(null,'r',40),
-        circle3.setAttributeNS(null,'cx', this.width);
-        circle3.setAttributeNS(null,'cy',this.height/2);
-        circle3.setAttributeNS(null,'fill','skyblue');
-        circle3.setAttributeNS(null,'stroke', 'red');
+        // let circle = document.createElementNS(SVG_NS, 'circle');
+        // circle3.setAttributeNS(null,'r',40),
+        // circle3.setAttributeNS(null,'cx', this.width);
+        // circle3.setAttributeNS(null,'cy',this.height/2);
+        // circle3.setAttributeNS(null,'fill','skyblue');
+        // circle3.setAttributeNS(null,'stroke', 'red');
         
-
-
-
-  
 
 
         svg.appendChild(rect);
         svg.appendChild(line);
         svg.appendChild(circle);
-        svg.appendChild(circle3);
-        svg.appendChild(circle2);
+        
  
 
         

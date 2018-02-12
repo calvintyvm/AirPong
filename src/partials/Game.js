@@ -3,6 +3,8 @@ import Board from './Board';
 import Paddle from './Paddle';
 import Ball from './Ball';
 import Score from './Score';
+import Net from './Net';
+
 
 export default class Game {
 
@@ -11,8 +13,8 @@ export default class Game {
 		this.width = width;
 		this.height = height;
 		this.gameElement = document.getElementById(this.element);
+		
 		this.board = new Board(this.width, this.height);
-
 		this.paddleWidth = 8;
 		this.paddleHeight = 56;
 		this.boardGap = 10;
@@ -44,6 +46,21 @@ export default class Game {
 			this.width,
 			this.height
 		);
+		this.ball2 = new Ball(
+			8,
+			this.width,
+			this.height
+		);
+		this.net1 = new Net(
+			40,
+			this.width,
+			this.height
+		); 
+		
+
+		
+
+		
 
 	document.addEventListener('keydown', event => {
     
@@ -55,7 +72,10 @@ export default class Game {
 
 	
     
-    });
+	});
+	
+
+	
 
 
 	this.score1 = new Score(this.width / 2 - 50, 30, 30);
@@ -81,8 +101,9 @@ export default class Game {
 		this.board.render(svg);
 		this.player1.render(svg);
 		this.player2.render(svg);
+		this.ball2.render(svg,this.player1,this.player2);
 		this.ball.render(svg,this.player1,this.player2);
-		
+		this.net1.render(svg);
 		this.score1.render(svg, this.player1.score);
 		this.score2.render(svg, this.player2.score);
 
