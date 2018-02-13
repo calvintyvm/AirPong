@@ -43,6 +43,29 @@ export default class Paddle {
         this.y = Math.min(this.y + this.speed, this.boardHeight - this.height);
     }
 
+    left(){
+      // this.y = this.y - this.speed;
+     this.x = Math.max(0,this.x - this.speed);
+     
+  }    
+  right(){
+      // this.y = this.y + this.speed;
+      this.x = Math.min(this.x + this.speed, this.boardHeight - this.height);
+  }
+
+
+  right1(){
+    // this.y = this.y - this.speed;
+   
+    this.x = Math.min(this.x + this.speed, 500);
+   
+  }    
+  left1(){
+    // this.y = this.y + this.speed;
+    this.x = Math.max(this.boardHeight + 23,this.x - this.speed);
+  }
+    
+
      coordinates(x, y, width, height) {
       let leftX = x;
       let rightX = x + width;
@@ -62,11 +85,18 @@ export default class Paddle {
         rect.setAttributeNS(null, 'y', this.y);
 
         // Player movement
-    if (this.keyState['a'] && this.player === 'player1') {
+    if (this.keyState['w'] && this.player === 'player1') {
       this.up();
+
     }
-    if (this.keyState['z'] && this.player === 'player1') {
+    if (this.keyState['s'] && this.player === 'player1') {
       this.down();
+    }
+    if (this.keyState['a'] && this.player === 'player1') {
+      this.left();
+    }
+    if (this.keyState['d'] && this.player === 'player1') {
+      this.right();
     }
     if (this.keyState['ArrowUp'] && this.player === 'player2') {
       this.up();
@@ -75,6 +105,13 @@ export default class Paddle {
       this.down();
     }
 
+    if (this.keyState['ArrowRight'] && this.player === 'player2') {
+      this.right1();
+    }
+    if (this.keyState['ArrowLeft'] && this.player === 'player2') {
+      this.left1();
+    }
+   
         svg.appendChild(rect);
 
     }

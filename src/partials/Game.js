@@ -14,10 +14,13 @@ export default class Game {
 		this.height = height;
 		this.gameElement = document.getElementById(this.element);
 		
+		
 		this.board = new Board(this.width, this.height);
 		this.paddleWidth = 8;
-		this.paddleHeight = 56;
+		this.paddleHeight = 50;
 		this.boardGap = 10;
+		this.netWidth = 0;
+		this.netHeight = this.height;
 		
     	this.player1 = new Paddle(
 		  this.height,
@@ -25,8 +28,9 @@ export default class Game {
 		  this.paddleHeight,
 		  this.boardGap,
 		  ((this.height - this.paddleHeight) / 2),
-		  KEYS.a,
-		  KEYS.z,
+		  KEYS.w,
+		  KEYS.s,
+		  
 		  'player1'
 		);
 
@@ -38,24 +42,30 @@ export default class Game {
 			((this.height - this.paddleHeight) / 2),
 			KEYS.up,
 			KEYS.down,
+			
 			'player2'
 		  );
 
 		this.ball = new Ball(
-			8,
+			15,
 			this.width,
-			this.height
+			this.height,
 		);
-		this.ball2 = new Ball(
-			8,
-			this.width,
-			this.height
-		);
+	
+
+	
 		this.net1 = new Net(
-			40,
-			this.width,
-			this.height
+			this.netWidth,
+			this.netHeight
+			
 		); 
+
+		this.net2 = new Net(
+			this.width,
+			this.netHeight
+			
+		); 
+		
 		
 
 		
@@ -73,6 +83,7 @@ export default class Game {
 	
     
 	});
+
 	
 
 	
@@ -99,11 +110,11 @@ export default class Game {
 		
 
 		this.board.render(svg);
+		this.net1.render(svg);
+		this.net2.render(svg);
 		this.player1.render(svg);
 		this.player2.render(svg);
-		this.ball2.render(svg,this.player1,this.player2);
 		this.ball.render(svg,this.player1,this.player2);
-		this.net1.render(svg);
 		this.score1.render(svg, this.player1.score);
 		this.score2.render(svg, this.player2.score);
 
