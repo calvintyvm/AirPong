@@ -39,7 +39,7 @@ Get to 20 points and listen to the cheers of joy.
 
 **Others:**
 * Space : pause
-* g : +1 puck
+* G : +1 puck
 
 ## Built with
 
