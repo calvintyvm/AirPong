@@ -25,22 +25,11 @@ export default class Board {
         circle.setAttributeNS(null,'r',30),
         circle.setAttributeNS(null,'cx', this.width/2),
         circle.setAttributeNS(null,'cy',this.height/2);
-        circle.setAttributeNS(null,'fill','red');
+        circle.setAttributeNS(null,'fill','white');
+        circle.setAttributeNS(null,'stroke','blue');
       
 
-        // let circle = document.createElementNS(SVG_NS, 'circle');
-        // circle.setAttributeNS(null,'r',40),
-        // circle.setAttributeNS(null,'cx', '0'),
-        // circle.setAttributeNS(null,'cy',this.height/2);
-        // circle.setAttributeNS(null,'fill','skyblue');
-        // circle.setAttributeNS(null,'stroke', 'red');
-
-        // let circle = document.createElementNS(SVG_NS, 'circle');
-        // circle3.setAttributeNS(null,'r',40),
-        // circle3.setAttributeNS(null,'cx', this.width);
-        // circle3.setAttributeNS(null,'cy',this.height/2);
-        // circle3.setAttributeNS(null,'fill','skyblue');
-        // circle3.setAttributeNS(null,'stroke', 'red');
+  
         
 
 

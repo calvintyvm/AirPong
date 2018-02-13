@@ -64,6 +64,8 @@ export default class Paddle {
     // this.y = this.y + this.speed;
     this.x = Math.max(this.boardHeight + 23,this.x - this.speed);
   }
+
+ 
     
 
      coordinates(x, y, width, height) {
@@ -77,12 +79,11 @@ export default class Paddle {
     //Render SVG images
 
     render(svg){
-        let rect = document.createElementNS(SVG_NS, 'rect');
-        rect.setAttributeNS(null,'fill','black');
-        rect.setAttributeNS(null,'height',this.height);
-        rect.setAttributeNS(null,'width',this.width);
-        rect.setAttributeNS(null, 'x', this.x);
-        rect.setAttributeNS(null, 'y', this.y);
+      let circle = document.createElementNS(SVG_NS, 'circle');
+      circle.setAttributeNS(null,'fill','red'),
+      circle.setAttributeNS(null,'r',30),
+      circle.setAttributeNS(null,'cx',this.x),
+      circle.setAttributeNS(null,'cy',this.y);
 
         // Player movement
     if (this.keyState['w'] && this.player === 'player1') {
@@ -112,7 +113,7 @@ export default class Paddle {
       this.left1();
     }
    
-        svg.appendChild(rect);
+        svg.appendChild(circle);
 
     }
 

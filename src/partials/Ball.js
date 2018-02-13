@@ -25,20 +25,24 @@ export default class Ball {
       while (this.vy ===0){
       this.vy = Math.floor(Math.random() * 10 - 5);
       }
-      this.vx = this.direction * (7 - Math.abs(this.vy));
+      this.vx = this.direction * (7  - Math.abs(this.vy));
     }
 
 
     goal(player){
 
-
-
       player.score++;
+
+      if(player.score == 10){
+        alert ("The player with 10 score has won");
+   
+      }
       this.reset();
 
 
       
     }
+
 
 
 
@@ -100,6 +104,7 @@ export default class Ball {
 
         this.x += this.vx;
         this.y += this.vy;
+
 
         this.wallCollision();
         this.paddleCollision(player1, player2);
