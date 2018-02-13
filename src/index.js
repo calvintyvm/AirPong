@@ -1,5 +1,6 @@
-import './styles/game.css';
 import './styles/reset.css';
+import './styles/game.css';
+
 import Game from './partials/Game'
 
 // create a game instance
