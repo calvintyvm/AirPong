@@ -50,4 +50,4 @@ Get to 20 points and listen to the cheers of joy.
 
 ## Done by
 
-* Calvin
+Calvin Ting
