@@ -8,7 +8,7 @@ export default class Ball {
       this.direction = 1;
 
       this.ping = new Audio('public/sounds/pong-01.wav');
-
+      this.goal1 = new Audio('public/sounds/goal.mp3')
     
     this.reset();
 
@@ -25,17 +25,24 @@ export default class Ball {
       while (this.vy ===0){
       this.vy = Math.floor(Math.random() * 10 - 5);
       }
-      this.vx = this.direction * (7  - Math.abs(this.vy));
+
+      this.vx = this.direction * (6  - Math.abs(this.vy));
+      
+    
     }
 
 
     goal(player){
 
       player.score++;
-
-      if(player.score == 10){
-        alert ("The player with 10 score has won");
-   
+     
+      
+      if(player.score == 20){
+     
+      this.goal1.play();
+      alert ("YOUVE WON!!")  ;      
+        
+        
       }
       this.reset();
 
@@ -43,7 +50,7 @@ export default class Ball {
       
     }
 
-
+    
 
 
 
@@ -77,6 +84,7 @@ export default class Ball {
 
         this.vx = -this.vx;
         this.ping.play();
+   
       }
 
      }else{
@@ -89,6 +97,7 @@ export default class Ball {
       this.vx = -this.vx;
       
       this.ping.play();
+    
 
       }
 
@@ -100,7 +109,8 @@ export default class Ball {
 
   render(svg,player1,player2) {
 
-   
+  
+
 
         this.x += this.vx;
         this.y += this.vy;

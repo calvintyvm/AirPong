@@ -1,4 +1,5 @@
 import { SVG_NS } from '../settings';
+import Ball from './Ball';
 
 
 export default class Paddle {
@@ -30,8 +31,13 @@ export default class Paddle {
     document.addEventListener('keyup', event => {
       this.keyState[event.key || event.which] = false;
     }, true);
+
+    
         } // constructor
 
+
+
+        
      
     up(){
         // this.y = this.y - this.speed;
@@ -53,6 +59,7 @@ export default class Paddle {
       this.x = Math.min(this.x + this.speed, this.boardHeight - this.height);
   }
 
+  
 
   right1(){
     // this.y = this.y - this.speed;
@@ -79,16 +86,16 @@ export default class Paddle {
     //Render SVG images
 
     render(svg){
-      let circle = document.createElementNS(SVG_NS, 'circle');
-      circle.setAttributeNS(null,'fill','red'),
-      circle.setAttributeNS(null,'r',30),
-      circle.setAttributeNS(null,'cx',this.x),
-      circle.setAttributeNS(null,'cy',this.y);
+      let rect = document.createElementNS(SVG_NS, 'rect');
+      rect.setAttributeNS(null,'fill','red'),
+      rect.setAttributeNS(null,'height',this.height),
+      rect.setAttributeNS(null,'width',this.width),
+      rect.setAttributeNS(null,'x',this.x),
+      rect.setAttributeNS(null,'y',this.y)
 
         // Player movement
     if (this.keyState['w'] && this.player === 'player1') {
       this.up();
-
     }
     if (this.keyState['s'] && this.player === 'player1') {
       this.down();
@@ -113,7 +120,7 @@ export default class Paddle {
       this.left1();
     }
    
-        svg.appendChild(circle);
+        svg.appendChild(rect);
 
     }
 

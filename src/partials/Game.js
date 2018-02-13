@@ -14,7 +14,8 @@ export default class Game {
 		this.height = height;
 		this.gameElement = document.getElementById(this.element);
 		
-		
+		this.extraBalls = [];
+		this.extraBalls = [];
 		this.board = new Board(this.width, this.height);
 		this.paddleWidth = 8;
 		this.paddleHeight = 50;
@@ -30,6 +31,7 @@ export default class Game {
 		  ((this.height - this.paddleHeight) / 2),
 		  KEYS.w,
 		  KEYS.s,
+		 
 		  
 		  'player1'
 		);
@@ -72,17 +74,39 @@ export default class Game {
 
 		
 
-	document.addEventListener('keydown', event => {
+		document.addEventListener('keydown', event => {
     
-      switch (event.key){
-        case KEYS.spaceBar:
-        this.pause = !this.pause;
-        break;
-	  }
+			switch (event.key){
+			  case KEYS.spaceBar:
+			  this.pause = !this.pause;
+			  break;
+			}
+		
+		});
 
-	
+		document.addEventListener('keydown', event => {
     
-	});
+			switch (event.key){
+			  case KEYS.g:
+
+				this.extraBalls.push(new Ball(15, this.width, this.height));
+					break;
+				}
+			
+				
+			});
+
+
+		
+		
+			
+	  
+	  
+
+
+
+
+
 
 	
 
@@ -95,8 +119,15 @@ export default class Game {
 
 	} // end of the constructor
 
+
+	makeBall(){
+		new Ball(15, 200, 200);
+	  }
+
 	render() {
 
+		
+	
 
 		if (this.pause){
 			return;
@@ -114,9 +145,17 @@ export default class Game {
 		this.net2.render(svg);
 		this.player1.render(svg);
 		this.player2.render(svg);
+		let myPlayer1 = this.player1;
+		let myPlayer2 = this.player2;
+		this.extraBalls.forEach(function(el){
+			el.render(svg, this.player1, this.player2);
+		}, this);
 		this.ball.render(svg,this.player1,this.player2);
 		this.score1.render(svg, this.player1.score);
 		this.score2.render(svg, this.player2.score);
+
+
+		// 
 
 		this.gameElement.appendChild(svg);
 

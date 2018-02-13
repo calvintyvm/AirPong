@@ -11,5 +11,7 @@ export const KEYS = {
     left: 'ArrowLeft',
     right: 'ArrowRight',
     spaceBar: ' ', //pause the game
+    g : 'g',
+ 
   
   }

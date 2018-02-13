@@ -1,4 +1,5 @@
 import { SVG_NS } from '../settings';
+import Ball from './Ball';
 
 
 
@@ -23,6 +24,7 @@ export default class Score {
       text.setAttributeNS(null,'font-size', this.size);
       text.setAttributeNS(null,'fill','black');
       text.textContent = score;
+
       svg.appendChild(text);
   }
 
