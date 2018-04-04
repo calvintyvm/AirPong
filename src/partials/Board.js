@@ -19,20 +19,13 @@ export default class Board {
         line.setAttributeNS(null,'y2',(this.height));
         line.setAttributeNS(null,'stroke-width','4');
 
-        
-
         let circle = document.createElementNS(SVG_NS, 'circle');
         circle.setAttributeNS(null,'r',30),
         circle.setAttributeNS(null,'cx', this.width/2),
         circle.setAttributeNS(null,'cy',this.height/2);
         circle.setAttributeNS(null,'fill','white');
         circle.setAttributeNS(null,'stroke','blue');
-      
-
   
-        
-
-
         svg.appendChild(rect);
         svg.appendChild(line);
         svg.appendChild(circle);

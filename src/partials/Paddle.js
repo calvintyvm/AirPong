@@ -34,36 +34,22 @@ export default class Paddle {
 
     
         } // constructor
-
-
-
-        
-     
     up(){
-        // this.y = this.y - this.speed;
+
        this.y = Math.max(0,this.y - this.speed);
        
     }    
     down(){
-        // this.y = this.y + this.speed;
         this.y = Math.min(this.y + this.speed, this.boardHeight - this.height);
     }
-
     left(){
-      // this.y = this.y - this.speed;
-     this.x = Math.max(0,this.x - this.speed);
-     
+
+     this.x = Math.max(0,this.x - this.speed); 
   }    
   right(){
-      // this.y = this.y + this.speed;
       this.x = Math.min(this.x + this.speed, this.boardHeight - this.height);
   }
-
-  
-
   right1(){
-    // this.y = this.y - this.speed;
-   
     this.x = Math.min(this.x + this.speed, 500);
    
   }    
@@ -71,10 +57,6 @@ export default class Paddle {
     // this.y = this.y + this.speed;
     this.x = Math.max(this.boardHeight + 23,this.x - this.speed);
   }
-
- 
-    
-
      coordinates(x, y, width, height) {
       let leftX = x;
       let rightX = x + width;

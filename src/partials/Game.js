@@ -6,8 +6,6 @@ import Score from './Score';
 import Net from './Net';
 import Win from './Win';
 
-
-
 export default class Game {
 
 	constructor(element, width, height) {
@@ -56,8 +54,6 @@ export default class Game {
 			this.height,
 		);
 	
-
-	
 		this.net1 = new Net(
 			this.netWidth,
 			this.netHeight
@@ -69,13 +65,6 @@ export default class Game {
 			this.netHeight
 			
 		); 
-		
-		
-
-		
-
-		
-
 		document.addEventListener('keydown', event => {
     
 			switch (event.key){
@@ -93,30 +82,21 @@ export default class Game {
 
 				this.extraBalls.push(new Ball(15, this.width, this.height));
 					break;
-				}
-			
-				
+				}	
 			});
-
-
 	this.winScreen = new Win(this.width, this.height);
 
 	this.score1 = new Score(this.width / 2 - 50, 30, 30);
 	this.score2 = new Score(this.width / 2 + 25, 30, 30);
 	this.winScreen = new Win(this.width, this.height);
-		
-
+	
 	} // end of the constructor
-
 
 	makeBall(){
 		new Ball(15, 200, 200);
 	  }
 
 	render() {
-		
-		
-	
 
 		if (this.pause){
 			return;
@@ -127,7 +107,6 @@ export default class Game {
 		svg.setAttributeNS(null, 'width', this.width);
 		svg.setAttributeNS(null, 'height', this.height);
 		svg.setAttributeNS(null, 'viewBox', `0 0 ${this.width} ${this.height}`);
-		
 
 		this.board.render(svg);
 		this.net1.render(svg);
@@ -146,9 +125,7 @@ export default class Game {
 		if(this.player1.score === 10 || this.player2.score === 10) {
 			this.winScreen.render(svg);
 			this.pause = true; 
-			
-			
-			
+
 			document.addEventListener('keydown', event2 => {
 				switch(event2.key) {
 					case KEYS.enter:
