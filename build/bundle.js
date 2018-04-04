@@ -88,7 +88,8 @@ var KEYS = exports.KEYS = {
     left: 'ArrowLeft',
     right: 'ArrowRight',
     spaceBar: ' ', //pause the game
-    g: 'g'
+    g: 'g',
+    enter: 'Enter'
 
 };
 
@@ -145,10 +146,6 @@ var Ball = function () {
 
       player.score++;
 
-      if (player.score === 5) {
-
-        this.pause = true;
-      }
       this.reset();
     }
   }, {
@@ -656,10 +653,7 @@ var Game = function () {
 	}, {
 		key: 'render',
 		value: function render() {
-			if (this.player1.score === 1 || this.player2.score === 1) {
-				this.winScreen.render(svg);
-				this.ball.reset();
-			}
+			var _this2 = this;
 
 			if (this.pause) {
 				return;
@@ -684,6 +678,22 @@ var Game = function () {
 			this.ball.render(svg, this.player1, this.player2);
 			this.score1.render(svg, this.player1.score);
 			this.score2.render(svg, this.player2.score);
+
+			if (this.player1.score === 10 || this.player2.score === 10) {
+				this.winScreen.render(svg);
+				this.pause = true;
+				this.ball.reset();
+
+				document.addEventListener('keydown', function (event2) {
+					switch (event2.key) {
+						case _settings.KEYS.enter:
+							_this2.player1.score = 0;
+							_this2.player2.score = 0;
+							_this2.pause = false;
+
+					}
+				});
+			}
 
 			// 
 
@@ -1116,7 +1126,7 @@ var Win = function () {
       text.setAttributeNS(null, 'y', this.boardHeight / 2);
       text.setAttributeNS(null, 'font-family', '"Silkscreen Web", monotype');
       text.setAttributeNS(null, 'font-size', 50);
-      text.setAttributeNS(null, 'fill', '#69409e');
+      text.setAttributeNS(null, 'fill', 'black');
       text.textContent = 'YOU WIN!';
 
       var text2 = document.createElementNS(_settings.SVG_NS, 'text');
@@ -1124,7 +1134,7 @@ var Win = function () {
       text2.setAttributeNS(null, 'y', this.boardHeight / 2 + 25);
       text2.setAttributeNS(null, 'font-family', '"Silkscreen Web", monotype');
       text2.setAttributeNS(null, 'font-size', 20);
-      text2.setAttributeNS(null, 'fill', '#2c806f');
+      text2.setAttributeNS(null, 'fill', 'red');
       text2.textContent = 'Press ENTER to play again';
 
       svg.appendChild(text);
