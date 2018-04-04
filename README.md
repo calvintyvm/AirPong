@@ -6,7 +6,7 @@ Move freely and try to get the ball across the goal.
 
 Need a challenge? Press g for more pucks.
 
-Get to 20 points and listen to the cheers of joy. 
+Get to 10 points and listen to the cheers of joy. 
 
 ## Strech Goals
 

@@ -37,14 +37,7 @@ export default class Ball {
       player.score++;
      
       
-      if(player.score === 20){
-     
-
-      alert ("YOUVE WON!!");      
-      this.pause = true; 
-      this.goal1.play();  
-        
-      }
+ 
       this.reset();
 
 

@@ -4,6 +4,8 @@ import Paddle from './Paddle';
 import Ball from './Ball';
 import Score from './Score';
 import Net from './Net';
+import Win from './Win';
+
 
 
 export default class Game {
@@ -97,24 +99,11 @@ export default class Game {
 			});
 
 
-		
-		
-			
-	  
-	  
-
-
-
-
-
-
-	
-
-	
-
+	this.winScreen = new Win(this.width, this.height);
 
 	this.score1 = new Score(this.width / 2 - 50, 30, 30);
 	this.score2 = new Score(this.width / 2 + 25, 30, 30);
+	this.winScreen = new Win(this.width, this.height);
 		
 
 	} // end of the constructor
@@ -125,7 +114,7 @@ export default class Game {
 	  }
 
 	render() {
-
+		
 		
 	
 
@@ -153,6 +142,28 @@ export default class Game {
 		this.ball.render(svg,this.player1,this.player2);
 		this.score1.render(svg, this.player1.score);
 		this.score2.render(svg, this.player2.score);
+
+		if(this.player1.score === 10 || this.player2.score === 10) {
+			this.winScreen.render(svg);
+			this.pause = true; 
+			this.ball.reset();
+			
+			
+			document.addEventListener('keydown', event2 => {
+				switch(event2.key) {
+					case KEYS.enter:
+					this.player1.score = 0;
+					this.player2.score = 0;
+					this.pause = false;
+					
+				
+				}
+			})
+	
+	
+		
+		}
+
 
 
 		// 

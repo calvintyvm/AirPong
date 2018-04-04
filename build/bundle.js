@@ -145,11 +145,9 @@ var Ball = function () {
 
       player.score++;
 
-      if (player.score === 20) {
+      if (player.score === 5) {
 
-        alert("YOUVE WON!!");
         this.pause = true;
-        this.goal1.play();
       }
       this.reset();
     }
@@ -585,6 +583,10 @@ var _Net = __webpack_require__(10);
 
 var _Net2 = _interopRequireDefault(_Net);
 
+var _Win = __webpack_require__(13);
+
+var _Win2 = _interopRequireDefault(_Win);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -638,8 +640,11 @@ var Game = function () {
 			}
 		});
 
+		this.winScreen = new _Win2.default(this.width, this.height);
+
 		this.score1 = new _Score2.default(this.width / 2 - 50, 30, 30);
 		this.score2 = new _Score2.default(this.width / 2 + 25, 30, 30);
+		this.winScreen = new _Win2.default(this.width, this.height);
 	} // end of the constructor
 
 
@@ -651,6 +656,10 @@ var Game = function () {
 	}, {
 		key: 'render',
 		value: function render() {
+			if (this.player1.score === 1 || this.player2.score === 1) {
+				this.winScreen.render(svg);
+				this.ball.reset();
+			}
 
 			if (this.pause) {
 				return;
@@ -694,7 +703,7 @@ exports.default = Game;
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(13);
+var content = __webpack_require__(14);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
 var update = __webpack_require__(4)(content, {});
@@ -720,7 +729,7 @@ if(false) {
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(14);
+var content = __webpack_require__(15);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
 var update = __webpack_require__(4)(content, {});
@@ -1078,18 +1087,72 @@ exports.default = Score;
 /* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _settings = __webpack_require__(0);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Win = function () {
+  function Win(width, height) {
+    _classCallCheck(this, Win);
+
+    this.boardWidth = width;
+    this.boardHeight = height;
+  }
+
+  _createClass(Win, [{
+    key: 'render',
+    value: function render(svg) {
+      var text = document.createElementNS(_settings.SVG_NS, 'text');
+      text.setAttributeNS(null, 'x', this.boardWidth / 2 - 125);
+      text.setAttributeNS(null, 'y', this.boardHeight / 2);
+      text.setAttributeNS(null, 'font-family', '"Silkscreen Web", monotype');
+      text.setAttributeNS(null, 'font-size', 50);
+      text.setAttributeNS(null, 'fill', '#69409e');
+      text.textContent = 'YOU WIN!';
+
+      var text2 = document.createElementNS(_settings.SVG_NS, 'text');
+      text2.setAttributeNS(null, 'x', this.boardWidth / 2 - 150);
+      text2.setAttributeNS(null, 'y', this.boardHeight / 2 + 25);
+      text2.setAttributeNS(null, 'font-family', '"Silkscreen Web", monotype');
+      text2.setAttributeNS(null, 'font-size', 20);
+      text2.setAttributeNS(null, 'fill', '#2c806f');
+      text2.textContent = 'Press ENTER to play again';
+
+      svg.appendChild(text);
+      svg.appendChild(text2);
+    }
+  }]);
+
+  return Win;
+}();
+
+exports.default = Win;
+
+/***/ }),
+/* 14 */
+/***/ (function(module, exports, __webpack_require__) {
+
 exports = module.exports = __webpack_require__(2)();
 // imports
 
 
 // module
-exports.push([module.i, "/* http://meyerweb.com/eric/tools/css/reset/ \n   v2.0 | 20110126\n   License: none (public domain)\n*/\n\nhtml, body, div, span, applet, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\na, abbr, acronym, address, big, cite, code,\ndel, dfn, em, img, ins, kbd, q, s, samp,\nsmall, strike, strong, sub, sup, tt, var,\nb, u, i, center,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, embed, \nfigure, figcaption, footer, header, hgroup, \nmenu, nav, output, ruby, section, summary,\ntime, mark, audio, video {\n\tmargin: 0;\n\tpadding: 0;\n\tborder: 0;\n\tfont-size: 100%;\n\tfont: inherit;\n\tvertical-align: baseline;\n}\n/* HTML5 display-role reset for older browsers */\narticle, aside, details, figcaption, figure, \nfooter, header, hgroup, menu, nav, section {\n\tdisplay: block;\n}\nbody {\n\tline-height: 1;\n}\nol, ul {\n\tlist-style: none;\n}\nblockquote, q {\n\tquotes: none;\n}\nblockquote:before, blockquote:after,\nq:before, q:after {\n\tcontent: '';\n\tcontent: none;\n}\ntable {\n\tborder-collapse: collapse;\n\tborder-spacing: 0;\n}\n\n/**\n * FONTS\n */\n\n@font-face {\n  font-family: 'Silkscreen Web';\n  src: url(" + __webpack_require__(3) + ");\n  src: url(" + __webpack_require__(3) + "?#iefix) format('embedded-opentype'),\n    url(" + __webpack_require__(17) + ") format('woff'),\n    url(" + __webpack_require__(16) + ") format('truetype'),\n    url(" + __webpack_require__(15) + "#silkscreennormal) format('svg');\n  font-weight: normal;\n  font-style: normal;\n}\n\n/**\n * GAME\n */\n\nhtml {\n  font-size: 16px;\n}\n\nbody {\n  align-items: center;\n  display: flex;\n  font-family: 'Silkscreen Web', monotype;\n  height: 100vh;\n  justify-content: center;\n  width: 100%;\n\n}\n\nh1 {\n  font-size: 2.5rem;\n  margin-bottom: 1rem; \n  text-align: center;\n  \n}\n\n\nline{\n  stroke: black;\n  stroke-width: 4;\n}\n\nh3{\n  text-align:center;\n}\n\n.text{\n  line-height:25px;\n\n}\n\n\n", ""]);
+exports.push([module.i, "/* http://meyerweb.com/eric/tools/css/reset/ \n   v2.0 | 20110126\n   License: none (public domain)\n*/\n\nhtml, body, div, span, applet, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\na, abbr, acronym, address, big, cite, code,\ndel, dfn, em, img, ins, kbd, q, s, samp,\nsmall, strike, strong, sub, sup, tt, var,\nb, u, i, center,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, embed, \nfigure, figcaption, footer, header, hgroup, \nmenu, nav, output, ruby, section, summary,\ntime, mark, audio, video {\n\tmargin: 0;\n\tpadding: 0;\n\tborder: 0;\n\tfont-size: 100%;\n\tfont: inherit;\n\tvertical-align: baseline;\n}\n/* HTML5 display-role reset for older browsers */\narticle, aside, details, figcaption, figure, \nfooter, header, hgroup, menu, nav, section {\n\tdisplay: block;\n}\nbody {\n\tline-height: 1;\n}\nol, ul {\n\tlist-style: none;\n}\nblockquote, q {\n\tquotes: none;\n}\nblockquote:before, blockquote:after,\nq:before, q:after {\n\tcontent: '';\n\tcontent: none;\n}\ntable {\n\tborder-collapse: collapse;\n\tborder-spacing: 0;\n}\n\n/**\n * FONTS\n */\n\n@font-face {\n  font-family: 'Silkscreen Web';\n  src: url(" + __webpack_require__(3) + ");\n  src: url(" + __webpack_require__(3) + "?#iefix) format('embedded-opentype'),\n    url(" + __webpack_require__(18) + ") format('woff'),\n    url(" + __webpack_require__(17) + ") format('truetype'),\n    url(" + __webpack_require__(16) + "#silkscreennormal) format('svg');\n  font-weight: normal;\n  font-style: normal;\n}\n\n/**\n * GAME\n */\n\nhtml {\n  font-size: 16px;\n}\n\nbody {\n  align-items: center;\n  display: flex;\n  font-family: 'Silkscreen Web', monotype;\n  height: 100vh;\n  justify-content: center;\n  width: 100%;\n\n}\n\nh1 {\n  font-size: 2.5rem;\n  margin-bottom: 1rem; \n  text-align: center;\n  \n}\n\n\nline{\n  stroke: black;\n  stroke-width: 4;\n}\n\nh3{\n  text-align:center;\n}\n\n.text{\n  line-height:25px;\n\n}\n\n\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)();
@@ -1103,19 +1166,19 @@ exports.push([module.i, "/* http://meyerweb.com/eric/tools/css/reset/ \n   v2.0 
 
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "public/fonts/slkscr-webfont.svg";
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "public/fonts/slkscr-webfont.ttf";
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "public/fonts/slkscr-webfont.woff";
