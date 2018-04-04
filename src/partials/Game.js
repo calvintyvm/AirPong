@@ -146,7 +146,7 @@ export default class Game {
 		if(this.player1.score === 10 || this.player2.score === 10) {
 			this.winScreen.render(svg);
 			this.pause = true; 
-			this.ball.reset();
+			
 			
 			
 			document.addEventListener('keydown', event2 => {
@@ -155,6 +155,7 @@ export default class Game {
 					this.player1.score = 0;
 					this.player2.score = 0;
 					this.pause = false;
+					this.ball.reset();
 					
 				
 				}

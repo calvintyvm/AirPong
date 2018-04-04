@@ -682,7 +682,6 @@ var Game = function () {
 			if (this.player1.score === 10 || this.player2.score === 10) {
 				this.winScreen.render(svg);
 				this.pause = true;
-				this.ball.reset();
 
 				document.addEventListener('keydown', function (event2) {
 					switch (event2.key) {
@@ -690,6 +689,7 @@ var Game = function () {
 							_this2.player1.score = 0;
 							_this2.player2.score = 0;
 							_this2.pause = false;
+							_this2.ball.reset();
 
 					}
 				});
