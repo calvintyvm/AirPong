@@ -8,6 +8,15 @@ Need a challenge? Press g for more pucks.
 
 Get to 20 points and listen to the cheers of joy. 
 
+## Strech Goals
+
+Made it look nicer (Air Hockey themed Pong)
+
+More controls (WASD, UP/DOWN/LEFT/RIGHT controls)
+
+More balls when G is pressed
+
+
 ## Setup
 
 **Install dependencies:**
@@ -39,7 +48,7 @@ Get to 20 points and listen to the cheers of joy.
 
 **Others:**
 * Space : pause
-* g : +1 puck
+* G : +1 puck
 
 ## Built with
 
@@ -50,4 +59,4 @@ Get to 20 points and listen to the cheers of joy.
 
 ## Done by
 
-* Calvin
+Calvin Ting
